@@ -45,8 +45,7 @@ in stdenv.mkDerivation {
         notIgnored = ! (builtins.elem bname ignores);
         notObject  = ( builtins.match ".*\\.o" name ) == null;
         notResult  = ( builtins.match "result(-*)?" bname ) == null;
-        notJSON    = ( builtins.match ".*\\.json" name ) == null;
-      in notIgnored && notObject && notResult && notJSON;
+      in notIgnored && notObject && notResult;
     };
     inherit boost_CFLAGS nix_INCDIR libExt;
     nativeBuildInputs = [
