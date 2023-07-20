@@ -231,8 +231,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "46ed466081b9cad1125b11f11a2af5cc40b942c7",
@@ -253,8 +251,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "a3a3dda3bacf61e8a39258a0ed9c924eeca8e293",
@@ -276,8 +272,6 @@
     "resolvedRef": {
       "attrs": {
         "dir": "lib",
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "46ed466081b9cad1125b11f11a2af5cc40b942c7",
@@ -298,8 +292,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "ref": "REF",
         "repo": "nixpkgs",
@@ -322,8 +314,6 @@
     "resolvedRef": {
       "attrs": {
         "dir": "lib",
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "ref": "REF",
         "repo": "nixpkgs",
@@ -831,8 +821,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "46ed466081b9cad1125b11f11a2af5cc40b942c7",
@@ -853,8 +841,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "a3a3dda3bacf61e8a39258a0ed9c924eeca8e293",
@@ -875,8 +861,6 @@
     },
     "resolvedRef": {
       "attrs": {
-        "lastModified": 1689413807,
-        "narHash": "sha256-exuzOvOhGAEKWQKwDuZAL4N8a1I837hH5eocaTcIbLc=",
         "owner": "NixOS",
         "ref": "REF",
         "repo": "nixpkgs",
