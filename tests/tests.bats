@@ -27,7 +27,7 @@ setup_file() {
   export NIXPKGS_REV="46ed466081b9cad1125b11f11a2af5cc40b942c7";
   mkdir .home;
   export HOME="$PWD/.home";
-  export NIX_CONFIG='experimental-features = flakes nix-commands';
+  export NIX_CONFIG='experimental-features = flakes nix-command';
   $NIX registry add nixpkgs "github:NixOS/nixpkgs/$NIXPKGS_REV";
 
   # Test data contains paths that resolve `.' ( `PWD' ) references
