@@ -4,15 +4,14 @@
 #
 # ---------------------------------------------------------------------------- #
 
-{
-  stdenv,
-  pkg-config,
-  nlohmann_json,
-  nix,
-  boost,
-  bats,
-  gnused,
-  jq
+{ stdenv
+, pkg-config
+, nlohmann_json
+, nix
+, boost
+, bats
+, gnused
+, jq
 }: let
 
   boost_CFLAGS = "-I" + boost + "/include";
