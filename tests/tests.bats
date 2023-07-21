@@ -38,6 +38,10 @@ setup_file() {
   # Test data contains paths that resolve `.' ( `PWD' ) references
   # to `/tmp/parser-util-test-root'.
   # We substitute those expectations with our actual `PWD' before testing.
+  #
+  # On Darwin `TMP' is a symlink and while our shell doesn't resolve it `nix'
+  # does, so we add `/private$PWD' to account for the effect this has on our
+  # expected outputs.
   case "$FLOX_SYSTEM" in
     *-darwin) _new_root="/private$PWD"; ;;
     *)        _new_root="$PWD";          ;;
