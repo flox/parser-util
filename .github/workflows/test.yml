@@ -18,12 +18,16 @@ concurrency:
   cancel-in-progress: true
 jobs:
   all-tests:
-    runs-on: ubuntu-latest
-    env:
-      SYSTEM: x86_64-linux
+    name: Tests ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@11f4ad19be46fd34c005a2864996d8f197fb51c6
+      - uses: cachix/install-nix-action@v22
         with:
           extra_nix_config: |
             experimental-features = nix-command flakes
