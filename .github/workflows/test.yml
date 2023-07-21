@@ -17,10 +17,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
+  strategy:
+    matrix:
+      os: [ubuntu-latest, macos-latest]
   all-tests:
-    runs-on: ubuntu-latest
-    env:
-      SYSTEM: x86_64-linux
+    runs-on: ${{ matrix.os }}
+
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@11f4ad19be46fd34c005a2864996d8f197fb51c6
