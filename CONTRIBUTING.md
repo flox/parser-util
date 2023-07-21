@@ -46,23 +46,21 @@ and `v<MAJOR> -> v<MAJOR>.<MINOR>`.
 For example lets say that we are releasing a new minor version which moves us
 from `v4.1.3` to `v4.2.0`, we would perform the following:
 ```shell
-# Make sure we're up to date, and on `main`.
+# Make sure we're up to date, and on `main'.
 $ git fetch;
 $ git checkout main;
 
-# You are not required to create an empty release commit, just make sure you
-# don't have any unstaged changes.
-$ git commit --allow-empty -m "release: v4.2.0";
-
-# Tag `HEAD` with the full `<MAJOR>.<MINOR>.<PATCH>`
+# Tag `HEAD' with the full `<MAJOR>.<MINOR>.<PATCH>'
 $ git tag -a v4.2.0 -m 'release v4.2.0';
 
-# Point `<MAJOR>.<MINOR>` to new release.
+# Point `<MAJOR>.<MINOR>' to new release.
 $ git tag -f 'v4.2' 'v4.2.1';
 
-# This is only required because we have created a new minor release,
-# for a new patch you can skip this portion.
+# Point `<MAJOR>' to `<MAJOR>.<MINOR>'.
 $ git tag -f 'v4' 'v4.2^{}';
+
+# Point `latest' to `<MAJOR>.<MINOR>'.
+$ git tag -f 'latest' 'v4';
 
 # Push the tags!
 $ git push origin --tags --force;
