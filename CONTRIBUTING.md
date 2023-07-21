@@ -55,10 +55,15 @@ $ git checkout main;
 $ git commit --allow-empty -m "release: v4.2.0";
 
 # Tag `HEAD` with the full `<MAJOR>.<MINOR>.<PATCH>`
-$ git tag -a v4.2.0;
+$ git tag -a v4.2.0 -m 'release v4.2.0';
 
 # Point `<MAJOR>.<MINOR>` to new release.
-$ git tag -f 'v4.2' 'v4.2^{}';
+$ git tag -f 'v4.2' 'v4.2.1';
+
+# This is only required because we have created a new minor release,
+# for a new patch you can skip this portion.
 $ git tag -f 'v4' 'v4.2^{}';
-$ git push origin --tags;
+
+# Push the tags!
+$ git push origin --tags --force;
 ```
