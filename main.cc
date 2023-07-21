@@ -16,7 +16,6 @@
 #include <nix/flake/flake.hh>
 #include <nix/store-api.hh>
 #include <cassert>
-#include <ranges>
 
 
 /* -------------------------------------------------------------------------- */

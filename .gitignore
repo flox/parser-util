@@ -6,3 +6,4 @@ tmp/
 /bin/
 result
 result-*
+.ccls-cache
