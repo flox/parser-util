@@ -43,5 +43,22 @@ To create a new release tag the `origin/main` branch to the "next"
 for `v<MAJOR>.<MINOR> -> v<MAJOR>.<MINOR>.<PATCH>`
 and `v<MAJOR> -> v<MAJOR>.<MINOR>`.
 
-TODO: example snippet.
-TODO: explain creating a GitHub release.
+For example lets say that we are releasing a new minor version which moves us
+from `v4.1.3` to `v4.2.0`, we would perform the following:
+```shell
+# Make sure we're up to date, and on `main`.
+$ git fetch;
+$ git checkout main;
+
+# You are not required to create an empty release commit, just make sure you
+# don't have any unstaged changes.
+$ git commit --allow-empty -m "release: v4.2.0";
+
+# Tag `HEAD` with the full `<MAJOR>.<MINOR>.<PATCH>`
+$ git tag -a v4.2.0;
+
+# Point `<MAJOR>.<MINOR>` to new release.
+$ git tag -f 'v4.2' 'v4.2^{}';
+$ git tag -f 'v4' 'v4.2^{}';
+$ git push origin --tags;
+```
