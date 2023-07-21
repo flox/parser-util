@@ -23,6 +23,11 @@ setup_file() {
   : "${JQ:=jq}";
   : "${SED:=sed}";
 
+  : "${FLOX_SYSTEM:=$(
+    $NIX --experimental-features 'nix-command flakes' eval --impure --raw  \
+      --expr builtins.currentSystem;
+  )}";
+
   # To match test data we need to pin `nixpkgs'.
   export NIXPKGS_REV="46ed466081b9cad1125b11f11a2af5cc40b942c7";
   mkdir .home;
@@ -33,8 +38,12 @@ setup_file() {
   # Test data contains paths that resolve `.' ( `PWD' ) references
   # to `/tmp/parser-util-test-root'.
   # We substitute those expectations with our actual `PWD' before testing.
-  $SED "s,\/tmp\/parser-util-test-root,$PWD,g"     \
-       "$BATS_TEST_DIRNAME/ref-str-to-attrs.json"  \
+  case "$FLOX_SYSTEM" in
+    *-darwin) _new_root="/private/$PWD"; ;;
+    *)        _new_root="$PWD";          ;;
+  esac
+  $SED "s,\/tmp\/parser-util-test-root,$_new_root,g"  \
+       "$BATS_TEST_DIRNAME/ref-str-to-attrs.json"     \
        > ./ref-str-to-attrs.json;
 
   export PARSER_UTIL JQ SED;
