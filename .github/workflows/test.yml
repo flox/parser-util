@@ -6,12 +6,14 @@ on:
     paths:
       - '**'
       - '!**/README*'
+      - '!**/CONTRIBUTING*'
 
   pull_request:
     types: [opened, synchronize, reopened]
     paths:
       - '**'
       - '!**/README*'
+      - '!**/CONTRIBUTING*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
