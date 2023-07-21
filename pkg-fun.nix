@@ -36,6 +36,7 @@ in stdenv.mkDerivation {
           "flake.nix"
           "flake.lock"
           ".git"
+          ".github"
           ".gitignore"
           "out"
           "bin"
