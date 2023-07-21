@@ -5,6 +5,7 @@
 # ---------------------------------------------------------------------------- #
 
 { stdenv
+, clang15Stdenv
 , pkg-config
 , nlohmann_json
 , nix
@@ -14,8 +15,12 @@
 , jq
 }: let
 
+  newClangStdenv =
+    if (stdenv.hostPlatform.useLLVM or false) || (stdenv.hostPlatform.isDarwin && stdenv.hostPlatform.isAarch64)
+    then clang15Stdenv
+    else stdenv;
   boost_CFLAGS = "-I" + boost + "/include";
-  libExt       = stdenv.hostPlatform.extensions.sharedLibrary;
+  libExt       = newClangStdenv.hostPlatform.extensions.sharedLibrary;
   nix_INCDIR   = nix.dev + "/include";
   batsWith     = bats.withLibraries ( p: [
                    p.bats-assert
@@ -23,7 +28,7 @@
                    p.bats-support
                  ] );
 
-in stdenv.mkDerivation {
+in newClangStdenv.mkDerivation {
     pname   = "parser-util";
     version = "0.1.0";
     src     = builtins.path {
