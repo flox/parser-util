@@ -39,7 +39,7 @@ setup_file() {
   # to `/tmp/parser-util-test-root'.
   # We substitute those expectations with our actual `PWD' before testing.
   case "$FLOX_SYSTEM" in
-    *-darwin) _new_root="/private/$PWD"; ;;
+    *-darwin) _new_root="/private$PWD"; ;;
     *)        _new_root="$PWD";          ;;
   esac
   $SED "s,\/tmp\/parser-util-test-root,$_new_root,g"  \
