@@ -17,11 +17,13 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 jobs:
-  strategy:
-    matrix:
-      os: [ubuntu-latest, macos-latest]
   all-tests:
+    name: Tests ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
 
     steps:
       - uses: actions/checkout@v3
