@@ -1,5 +1,6 @@
 name: Test
 on:
+  workflow_dispatch:
   push:
     branches:
       -  main
@@ -7,13 +8,8 @@ on:
       - '**'
       - '!**/README*'
       - '!**/CONTRIBUTING*'
-
   pull_request:
     types: [opened, synchronize, reopened]
-    paths:
-      - '**'
-      - '!**/README*'
-      - '!**/CONTRIBUTING*'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
