@@ -253,13 +253,6 @@ static const char usageMsg[] =
   int
 main( int argc, char * argv[], char ** envp )
 {
-  nix::initNix();
-  nix::initGC();
-
-  nix::evalSettings.pureEval = false;
-
-  nix::EvalState state( {}, nix::openStore() );
-
   char   cmd = '\0';
   char * arg = nullptr;
 
@@ -313,24 +306,34 @@ main( int argc, char * argv[], char ** envp )
         }
     }
 
+  /* Handle early to avoid initializing `nix' globals. */
+  if ( cmd == 'h' )
+    {
+      std::cout << usageMsg << std::endl << std::endl
+                << "Options:" << std::endl
+                << "  -r <FLAKE-URI|JSON>  parseAndResolveRef" << std::endl
+                << "  -l <FLAKE-URI|JSON>  lockFlake"          << std::endl
+                << "  -i INSTALLABLE-URI   parseAndResolveRef" << std::endl
+                << "  -u URI               parseURI"           << std::endl
+                << "     --usage           show usage message" << std::endl
+                << "  -h,--help            show this message"  << std::endl;
+      return EXIT_SUCCESS;
+    }
+
+  /* Initialize `nix' globals. */
+  nix::initNix();
+  nix::initGC();
+
+  nix::evalSettings.pureEval = false;
+
+  nix::EvalState state( {}, nix::openStore() );
+
   switch ( cmd )
     {
       case 'r': j = parseAndResolveRef( state, arg ); break;
       case 'l': j = lockFlake(          state, arg ); break;
       case 'i': j = parseInstallable(   state, arg ); break;
       case 'u': j = parseURI(                  arg ); break;
-      case 'h':
-        std::cout << usageMsg << std::endl << std::endl
-                  << "Options:" << std::endl
-                  << "  -r <FLAKE-URI|JSON>  parseAndResolveRef" << std::endl
-                  << "  -l <FLAKE-URI|JSON>  lockFlake"          << std::endl
-                  << "  -i INSTALLABLE-URI   parseAndResolveRef" << std::endl
-                  << "  -u URI               parseURI"           << std::endl
-                  << "     --usage           show usage message" << std::endl
-                  << "  -h,--help            show this message"  << std::endl;
-        return EXIT_SUCCESS;
-        break;
-
       default:
         std::cerr << "Unrecognized command flag: " << argv[1] << std::endl
                   << usageMsg << std::endl;
@@ -338,7 +341,6 @@ main( int argc, char * argv[], char ** envp )
         return EXIT_FAILURE;
         break;
     }
-
 
   std::cout << j.dump() << std::endl;
 
