@@ -50,16 +50,16 @@ from `v4.1.3` to `v4.2.0`, we would perform the following:
 $ git fetch;
 $ git checkout main;
 
-# Tag `HEAD' with the full `<MAJOR>.<MINOR>.<PATCH>'
+# Tag `HEAD' with the full `v<MAJOR>.<MINOR>.<PATCH>'
 $ git tag -a v4.2.0 -m 'release v4.2.0';
 
-# Point `<MAJOR>.<MINOR>' to new release.
+# Point `v<MAJOR>.<MINOR>' to new release.
 $ git tag -f 'v4.2' 'v4.2.0';
 
-# Point `<MAJOR>' to `<MAJOR>.<MINOR>'.
+# Point `v<MAJOR>' to `v<MAJOR>.<MINOR>'.
 $ git tag -f 'v4' 'v4.2';
 
-# Point `latest' to `<MAJOR>.<MINOR>'.
+# Point `latest' to `v<MAJOR>'.
 $ git tag -f 'latest' 'v4';
 
 # Push the tags!
