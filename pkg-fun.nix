@@ -7,13 +7,14 @@
 { stdenv
 , pkg-config
 , nlohmann_json
-, nix
+, nixVersions
 , boost
 , bats
 , gnused
 , jq
 }: let
 
+  nix = nixVersions.nix_2_15;
   batsWith =
     bats.withLibraries ( p: [p.bats-assert p.bats-file p.bats-support] );
 
