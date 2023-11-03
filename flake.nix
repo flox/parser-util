@@ -11,7 +11,7 @@
   inputs.nixpkgs.url = "github:NixOS/nixpkgs/release-23.05";
 
   # NOT pulled in as a flake to avoid circular locks
-  inputs.nix-patches.url = "github:flox/pkgdb/tomberek.bump-nix";
+  inputs.nix-patches.url = "github:flox/pkgdb";
   inputs.nix-patches.flake = false;
 
 
